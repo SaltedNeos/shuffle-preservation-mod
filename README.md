@@ -56,9 +56,9 @@ Installing the mod's .cia file in FBI wipes the save file associated with the ga
 Step 3: Installing the modded game
 Safely eject your SD card from your computer and plug it back into your 3DS. Turn on the console, open FBI, and navigate to the cias folder. Click on the patched .cia game file and choose “Install and delete CIA”. This will install the patched game on your console and then delete the file from your SD card as you won't need it after it's been installed. Do not run the game yet! Proceed to step 4:
 
-Step 4: restoring your save file
+Step 4: Restoring your save file
 Open whatever save manager you used for your backup and select Pokemon shuffle. Scroll to the modified save you created and press R to restore. When it says “Restore selected save?” press A to confirm. Once this is done you're all set!
 
-Step 5: confirm installation
+Step 5: Confirm installation
 If all went well, you will see a starting game textbox upon opening the game, and the game will be on v1.5.0. Once you load the game, open the shop and select Special Shop. If you have the two Drop Rate Increase Items, the mod has been installed successfully. 
 If you see 1.5.11 when you open the game, again, check the shop for those two items. If they're in the shop, this just means you need to delete the extra data for the game in system settings, then reload your save file's backup from checkpoint or JKSV.
