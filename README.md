@@ -45,20 +45,26 @@ Move the "modded savedata" folder to your 3DS’s SD card in 3DS > Checkpoint > 
 If you use this save file, it's best to not play specials until after stage 11, they get pretty glitchy since they're not supposed to be unlocked yet.
 
 Step 1: Applying the patch
+
 First, at always, MAKE A COPY OF YOUR .cia file and save it somewhere safe. You NEED THIS FILE TO UPDATE THE GAME IN THE FUTURE OR FOR ANY OTHER MOD RELEASED. Open the flips version recommended for your OS above and select the Pokemon shuffle .cia fileas the “Base file”. Now, download the shuffle preservation.bps file in this repository and select it as the patch file. Let the program run and download your patched game! Add this to the cias folder on your SD card. 
 
 Step 2: Removing old data from your 3DS
+
 Once your extra data is backed up, you need to delete Shuffle's Extra Data in the 3DS System settings menu. You can also delete Shuffle’s game data. Don't make a backup here, we already did that above!
 
 Step 2.5: Make sure you have a backup of your save file
+
 Installing the mod's .cia file in FBI wipes the save file associated with the game, if you haven't already done it and wish to keep your save file MAKE SURE IT IS BACKED UP BEFORE GOING ANY FARTHER. Whether it be with Checkpoint or JKSV, make absolutely sure you have a backup, as you will not be getting your save file back after this if it is not backed up!
 
 Step 3: Installing the modded game
+
 Safely eject your SD card from your computer and plug it back into your 3DS. Turn on the console, open FBI, and navigate to the cias folder. Click on the patched .cia game file and choose “Install and delete CIA”. This will install the patched game on your console and then delete the file from your SD card as you won't need it after it's been installed. Do not run the game yet! Proceed to step 4:
 
 Step 4: Restoring your save file
+
 Open whatever save manager you used for your backup and select Pokemon shuffle. Scroll to the modified save you created and press R to restore. When it says “Restore selected save?” press A to confirm. Once this is done you're all set!
 
 Step 5: Confirm installation
+
 If all went well, you will see a starting game textbox upon opening the game, and the game will be on v1.5.0. Once you load the game, open the shop and select Special Shop. If you have the two Drop Rate Increase Items, the mod has been installed successfully. 
 If you see 1.5.11 when you open the game, again, check the shop for those two items. If they're in the shop, this just means you need to delete the extra data for the game in system settings, then reload your save file's backup from checkpoint or JKSV.
