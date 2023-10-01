@@ -11,7 +11,7 @@ Requirements:
 	⁃	godmode9 to dump and decrypt your Pokemon shuffle .cia file or a decrypted unmodified Pokemon shuffle .cia file
 On your computer:
 	⁃	An sd card reader
-	⁃	Flips to apply the patch. Mac users can use this: https://media.smwcentral.net/Alcaro/bps/
+	⁃	Floating IPS (or some other IPS patcher) to apply the patch. Mac users can use this: https://media.smwcentral.net/Alcaro/bps/
 	⁃	A hex editor to modify your save file to be compatible with the mod. Alternatively, you can choose to use the provided save file which will start at the tutorial and will have specials unlocked. Mac users can use this: http://hexfiend.com/
 
 Step 0: Backing up your save file and extra data
