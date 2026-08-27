@@ -13,7 +13,7 @@ TL;DR: BACKUP YOUR SAVE FILE, use a hex editor software of your choice to change
 - **godmode9** - to dump and decrypt cia files.
 - **An SD card reader in your computer, or FTPD on your 3DS**  - to transfer files to your computer. For FTPD, your computer can receive the files in the file browser (just type in the address your 3DS gives you). Alternatively, you can use an FTP client like WinSCP to receive the files from FTPD.
 - **Floating IPS, also known as Flips** - for applying the patch. You can get that here: https://www.romhacking.net/utilities/1040/. Mac users can use this: https://media.smwcentral.net/Alcaro/bps/.
-- **A hex editor** - to modify your existing save file (fi you have one). For example, HxD: https://mh-nexus.de/en/hxd/. Mac users can use this: http://hexfiend.com/.
+- **A hex editor** - to modify your existing save file (if you have one). For example, HxD: https://mh-nexus.de/en/hxd/. Mac users can use this: http://hexfiend.com/.
 - **7-zip** - to unzip zip files: https://7-zip.org/.
 
 ---
@@ -22,7 +22,7 @@ TL;DR: BACKUP YOUR SAVE FILE, use a hex editor software of your choice to change
 
 **IMPORTANT: If you have played Shuffle before, then you MUST back up your save data to keep your progress in the mod. You also MUST backup your extra data if you ever want to switch back to vanilla Shuffle.**
 
-Note: This is for people who have played Shuffle before. If you have not, then you can skip this.
+Note: This is for people who have played Shuffle before. **If you have NOT played Shuffle before, skip to step 1b.**
 
 - Open up Checkpoint, then use the D-pad to navigate to Shuffle on the top screen (if you don't see Shuffle, hold B for a couple seconds to make Checkpoint refresh the list). Press A to select it, which will then move control to the bottom screen.
 - Navigate to "new" and select "Backup" to create a backup of your current save file. Name it something you'll remember, like "premod-save".
@@ -44,7 +44,7 @@ After you've done that, put your SD card back into your 3DS.
 If Shuffle is already installed on your 3DS, but you don't have a cia on hand, you'll need to make a dump of it:
 
 - If your 3DS is on, turn it off, then hold Start as you turn it on to enter godmode9. Follow the instructions here to dump your Shuffle cia: https://3ds.hacks.guide/dumping-titles-and-game-cartridges#dumping-an-installed-title .
-- You will now have a decrypted cia in /gm9/out/ on your SD Card. Hold R and press Start at the same time to power off your 3DS.
+- You now have a decrypted cia in /gm9/out/ on your SD Card. Hold R and press Start at the same time to power off your 3DS.
 
 ## Step 1b: Make sure your cia is decrypted.
 
@@ -52,7 +52,7 @@ If you already have a cia (I won't ask how), you need to make sure it is decrypt
 
 - Put your cia in the "cias" folder on the root of your SD card, then follow the instructions here to decrypt it with godmode9: https://3ds.hacks.guide/dumping-titles-and-game-cartridges#encrypting--decrypting-a-cia-file . 
 - If your cia is already decrypted, then godmode9 will tell you that. Doesn't hurt to make sure!
-- You will now have a decrypted cia in /gm9/out/ on your SD Card. Hold R and press Start at the same time to power off your 3DS.
+- You now have a decrypted cia in /gm9/out/ on your SD Card. Hold R and press Start at the same time to power off your 3DS.
 
 ---
 
@@ -101,11 +101,12 @@ You've now patched the cia! Keep it in a "shuffle postmod materials" folder for 
 
 ## Step 4: Hex-edit the save file
 
-Note: If you didn't backup a save file earlier, you can skip this step.
+Note: If you didn't backup a save file earlier, skip to step 5.
 - Make a copy of your save file, and keep the orginal in a safe place, such as a "shuffle premod materials" folder. Put the copy somewhere else, like a "shuffle postmod materials" folder.
 - Open up your hex editor (such as HxD) and select the copied save file.
-- Edit the two bits shown below to be zeroes: 
-![image](https://github.com/SaltedNeos/shuffle-preservation-mod/assets/133167521/bdbbbf54-8246-4ba7-8dff-54acd13e50ee)
+- Using the image below, make sure all the cells in red boxes (0x46, 0x47, 0x61...0x67) are set to zeroes, and the one cell in a blue box (0x6B) is set to 40.
+<img width="493" height="138" alt="image" src="https://github.com/user-attachments/assets/3bbcd15b-2dd6-43a7-93fe-da6cad0c7fe9" />
+
 - Save, and exit the hex editor.
 - If your hex editor made a .bak file, that's just a copy of the file before you made the edit. We already made a copy, so you don't need this - delete it.
 - Rename the folder containing your now-modded save to a name that indicates it is modded. For example, "postmod-save". This will make it easier to find it in Checkpoint later.
@@ -173,3 +174,68 @@ To switch:
 - Open up Checkpoint, and restore both your old extra data and the current save data.
 
 And you're done! Shuffle is back to its vanilla version.
+
+
+--- 
+
+## Extra information
+
+### Changing the system clock / Help, my special stages are locked out!
+
+If you ever want to change your system clock (such as for Daylight Savings), **DO NOT use the 3DS settings menu!** Instead, use the Rosalina menu.
+
+(Why do this?) The time on your 3DS is calculated by adding RTC + Offset, where RTC is the "Real Time Clock", while the offset is the "user time offset".
+- RTC is assigned by the factory, and the user usually can't change it.
+- The offset is the thing you change in the 3DS settings menu.
+- Lots of games (such as Animal Crossing) save the last known offset into the save file. When you open the game, it checks whether the last saved offset matches your current offset. If they're different, the game thinks you time traveled.
+- The Rosalina menu instead changes the RTC, leaving the offset alone. This prevents your games from detecting time travel.
+
+How to change time in the Rosalina menu:
+- From the Home Menu, hold L + down on D-pad + Select to open the Rosalina menu.
+- Scroll down to "Miscellaneous options"
+- Select "Update time and date via NTP". This will update the RTC clock on your 3DS to match the server.
+- Select "Nullify user time offset" to set your offset to 0. (Note that the 3DS hacks guide had you do this during setup; but this is how you change the offset back to 0, if you've changed time in the 3DS settings menu at any point after you hacked your 3DS.)
+
+Note that if your offset wasn't already 0, then Shuffle will now detect the change and lock out your special stages
+- You can fix this by repeating the hex edit we did earlier. One of those zeroes was the saved offset.
+
+### What does the mod change?
+
+Content changes:
+- Data from versions 1.5.1 - 1.5.11 are available without needing Extra Data. This includes:
+  - Main stages 641-700
+  - UX stages 1-700
+  - Expert stages 52-53
+  - All special stages
+- Competitive stages are now boss stages, using historical HP amounts from H-class ranking tiers. Specifically, their HP is as follows:
+  - M-Banette: 23,770
+  - M-Garchomp: 24,890
+  - M-Steelix: 32,890
+  - M-Manectric: 21,860
+  - M-Gyarados: 18,310
+  - M-Alakazam: 28,900
+  - M-Pinsir: 31,720
+  - M-Camerupt: 34,440
+  - M-Beedrill: 24,700
+  - M-Houndoom: 29,980
+  - M-Gardevoir: 34,550
+  - M-Charizard X: 32,340
+- To compensate for Check-In and Competition ranking rewards no longer working, the items are distributed among other stages:
+  - Clearing a competitive stage gives 25 banked Hearts, the mega stone (or 1 Level Up, if you already have the stone), and 1 Jewel.
+  - The weekend Victini stage has a chance to drop Raise Max Levels (RMLs). It can drop up to 3 boxes, with each box containing 2 RMLs. The rates for each box are 100%, 50%, and 12.5%.
+  - To balance the drops added to Victini, you can no longer spend Jewels for additional plays on it. You only get the one free play per week.
+- Galvantula's stage no longer appears during Survival Mode stages 45-49, as it was frequently a run-killer.
+- The Drop Rate Increase (8 hours) and Drop Rate Increase & No Hearts Needed (45 min) items have been ported over from the Mobile version, and can be bought in the Special Shop for Jewels (1 Jewel for DRI, 2 Jewels for DRI+NHN). DRI+NHN re-uses DRI's description to ensure compatibility with all languages.
+- (Week 2) Meganium and Emboar have switched their Heart costs and drop rates, to make Meganium a less-tedious farm. Specifically, this doubles the play cost to 2 Hearts, but also doubles the drop rate, meaning the amount of plays to max the skill is halved.
+
+Visual and music changes:
+- (Week 7) Salazzle's stage now uses the "expert stage" music instead of the "hard stage" music, to decrease the chance of not realizing it's a timed stage.
+- Vivillon's icon has been swapped to its unused fixed version from the game's files. Previously, it used its old icon from Battle Trozei. This bug (pun not intended) is already fixed on Mobile.
+- Shiny Genesect (EX 51) now uses its unused large moving sprite from the game's files. Additionally, the Pokemon List now lists its form name as "Shiny" (previously, nothing was displayed).
+
+Known bugs:
+- Main stages 1-11 give incorrectly-low coin rewards for their first clears.
+- Special stages act glitchy if accessed before beating main stage 11 (workaround: just beat main stage 11 before touching special stages).
+- The 12 Celebration Pikachu (normally from checking in 10 times per month) are unobtainable by legitimate means. The only way to get them would be by editing your save file.
+- Most Ultra Beasts do not give their first-clear reward of 5 Exp Booster Larges (EBLs). Xurkitree is the only one that works correctly.
+- Guzzlord gives 5 EBLs for every time it is defeated, instead of only the first time. This allows for obtaining 50 EBLs across its 10 plays.
