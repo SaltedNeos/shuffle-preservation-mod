@@ -198,6 +198,7 @@ How to change time in the Rosalina menu:
 
 Note that if your offset wasn't already 0, then Shuffle will now detect the change and lock out your special stages
 - You can fix this by repeating the hex edit we did earlier. One of those zeroes was the saved offset.
+- Delete your extra data again, and then boot up the game so it recreates the extra data using your edited save. This should convince the game that you have special stage access.
 
 ### What does the mod change?
 
